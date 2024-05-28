@@ -22,9 +22,6 @@ resource "aws_iot_policy_attachment" "policy_att" {
 
 resource "aws_iot_policy" "pub_raspberry_pi_topic" {
   name = "PubToRaspberryPiTopic"
-
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
