@@ -20,6 +20,11 @@ resource "aws_iot_policy_attachment" "policy_att" {
   target = aws_iot_certificate.raspberry_pi_cert.arn
 }
 
+resource "local_file" "raspberry_pi_cert_private_key" {
+    content  = aws_iot_certificate.raspberry_pi_cert.private_key
+    filename = "raspberry_pi_private_key.pem"
+}
+
 resource "aws_iot_policy" "pub_raspberry_pi_topic" {
   name = "PubToRaspberryPiTopic"
   policy = jsonencode({
