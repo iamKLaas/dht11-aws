@@ -20,7 +20,12 @@ resource "aws_iot_policy_attachment" "policy_att" {
   target = aws_iot_certificate.raspberry_pi_cert.arn
 }
 
-resource "local_file" "raspberry_pi_cert_private_key" {
+resource "local_file" "raspberry_pi_cert_file" {
+    content  = aws_iot_certificate.raspberry_pi_cert.certificate_pem
+    filename = "raspberry_pi_cert.pem"
+}
+
+resource "local_file" "raspberry_pi_cert_private_key_file" {
     content  = aws_iot_certificate.raspberry_pi_cert.private_key
     filename = "raspberry_pi_private_key.pem"
 }
