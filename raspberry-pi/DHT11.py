@@ -1,14 +1,17 @@
 import adafruit_dht
-import time
+import json
 import sys
-from board import D17
+import time
 from awsiot import mqtt5_client_builder
 from awscrt import mqtt5
+from board import D17
 from concurrent.futures import Future
 
-SLEEP_TIME = 10
+SLEEP_TIME = 60
 CONNECTION_SUCCESS_RESPONSE_TIMEOUT = 100
+PUBLISH_COMPLETION_RESPONSE_TIMEOUT = 100
 
+topic_name = "RaspberryPi"
 future_connection_success_data = Future()
 
 def on_lifecycle_connection_success(lifecycle_connect_success_data: mqtt5.LifecycleConnectSuccessData):
@@ -42,8 +45,16 @@ if __name__ == '__main__':
 
     while True:
         try:
-            print("Humidity: {}%", dht.humidity)
-            print("Temperature: {}%", dht.temperature)
+            print(f"Humidity: {dht.humidity}")
+            print(f"Temperature: {dht.temperature}")
+
+            publish_future = client.publish(mqtt5.PublishPacket(
+                topic=topic_name,
+                payload=json.dumps({"humidity": dht.humidity, "temperature": dht.temperature}),
+                qos=mqtt5.QoS.AT_LEAST_ONCE
+            ))
+            publish_completion_data = publish_future.result(PUBLISH_COMPLETION_RESPONSE_TIMEOUT)
+            print("PubAck received with {}".format(repr(publish_completion_data.puback.reason_code)))
         except RuntimeError as error:
             # Catch RuntimeError, because of https://github.com/adafruit/Adafruit_CircuitPython_DHT/issues/33
             print(error.args[0])
