@@ -63,5 +63,6 @@ if __name__ == '__main__':
         except Exception as error:
             # If any other error occurs, exit
             dht.exit()
+            client.stop()
             raise error
         time.sleep(SLEEP_TIME)
