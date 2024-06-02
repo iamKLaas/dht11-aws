@@ -1,0 +1,1 @@
+For running the terraform script the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCES_KEY need to be exported as environment variables.
