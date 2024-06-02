@@ -16,4 +16,4 @@ Needed input variables are
 * aws_region (default is "eu-central-1")
 * aws_account_id
 
-To destroy the setup infrastructure run the 'terraform destory' command.
+To destroy the setup infrastructure run the 'terraform destroy' command.
