@@ -4,5 +4,5 @@ This project is about showcasing the reading of sensor data from a DHT11 sensor 
 The AWS device/thing setup is done with Terraform.
 
 Further details including run instructions can be found here:
-[Terraform Setup](./terraform/README.md)
-[Raspberry Pi Setup](./raspberry-pi/README.md)
+* [Terraform Setup](./terraform/README.md)
+* [Raspberry Pi Setup](./raspberry-pi/README.md)
