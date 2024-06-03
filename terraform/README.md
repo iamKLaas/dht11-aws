@@ -1,4 +1,4 @@
-# AWS IoT Thing (Infrastructure) Setup
+# Terraform - AWS IoT Thing (Infrastructure) Setup
 
 The Terraform configuration in this package will setup a AWS IoT thing with the name "raspberry-pi" in the provided AWS account and region.
 The AWS IoT thing will be setup with a certificate that has a policy attached that allows to connect to AWS IoT Core and to publish messages on the topic "RaspberryPi".
