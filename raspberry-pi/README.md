@@ -5,7 +5,7 @@ The Raspberry Pi is reading data from the DHT11 sensor and publishing it via MQT
 ### Prerequisites
 * Raspberry Pi is connected to the internet
 * Packages are installed as given in [requirements.txt](./requirements.txt)
-* DHT11 humidity and temperature sensor is connected to the Raspberry Pi
+* DHT11 humidity and temperature sensor is connected to the Raspberry Pi - use GPIO Pin 17 to connect to the signal of the sensor
 * Certificates created by the [Terraform Configuration](../terraform/main.tf) are present in the same directory as the DHT11.py script
 
 ### Instruction
