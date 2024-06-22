@@ -66,4 +66,5 @@ variable "aws_region" {
 variable "aws_account_id" {
   type        = string
   description = "Account ID of your AWS account"
+  sensitive = true
 }
